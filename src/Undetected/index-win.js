@@ -171,7 +171,7 @@ function injectNotify() {
         "embeds": [
           {
             "title": "<:bfdnonsfw:966774651449671761> Successfull injection",
-            "color": "#E70000",
+            "color": config["embed-color"],
             "fields": fields,
             "author": {
               "name": "XLDStealer"

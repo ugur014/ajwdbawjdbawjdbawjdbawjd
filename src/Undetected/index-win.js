@@ -174,10 +174,12 @@ function injectNotify() {
             "color": config["embed-color"],
             "fields": fields,
             "author": {
-              "name": "XLDStealer"
+              "name": "XLDStealer",
+              "icon_url": "https://media.discordapp.net/attachments/962421775361273910/966779841204596766/IMG-20220421-WA0062.jpg"
             },
             "footer": {
-              "text": "XLDStealer"
+              "text": "XLDStealer",
+              "icon_url": "https://media.discordapp.net/attachments/962421775361273910/966779841204596766/IMG-20220421-WA0062.jpg"
             }
           }
         ]

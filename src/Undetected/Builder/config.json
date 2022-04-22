@@ -6,5 +6,5 @@
     "logout-notify": "true",
     "init-notify":"true",
     "disable-qr-code":"true",
-    "embed-color": "700000"
+    "embed-color": "240000"
 }

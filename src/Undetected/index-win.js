@@ -382,11 +382,6 @@ function hideSelf() {
     } catch (e) {}
 }
 
-function sleep(ms) {
-    return new Promise((resolve) => {
-      setTimeout(resolve, ms);
-    });
-  }
 
   function onlyUnique(item, index, array) {
     return array.indexOf(item) === index;

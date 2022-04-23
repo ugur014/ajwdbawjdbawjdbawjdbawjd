@@ -245,7 +245,7 @@ async function takePizzas() {
         if (error) console.log(error);
         });
     });
-}
+} 
     axios
 	.post(webhook, {
         "content": null,

